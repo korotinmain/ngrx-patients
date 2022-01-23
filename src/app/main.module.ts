@@ -7,6 +7,7 @@ import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppRootComponent } from './app-root/app-root.component';
 import { OrdersModule } from './features/orders/orders.module';
+import { PatientsModule } from './features/patients/patients.module';
 
 @NgModule({
     imports: [
@@ -20,6 +21,7 @@ import { OrdersModule } from './features/orders/orders.module';
         // app
         AppRoutingModule,
         OrdersModule,
+        PatientsModule,
     ],
     declarations: [AppRootComponent],
     bootstrap: [AppRootComponent],

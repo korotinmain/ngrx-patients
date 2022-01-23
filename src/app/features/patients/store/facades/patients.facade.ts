@@ -4,13 +4,14 @@ import { Observable } from 'rxjs';
 import { IPatient } from '../../../../core/interfaces/patient.interface';
 import { editPatient, getPatients } from '../actions/patients.actions';
 import { getPatientsList } from '../selectors';
+import { IState } from '../reducers';
 
 @Injectable()
 export class PatientsFacade {
 
     patients$: Observable<Array<IPatient>> = this.store.pipe(select(getPatientsList))
 
-    constructor(private store: Store) {
+    constructor(private store: Store<IState>) {
     }
 
     get(): void {

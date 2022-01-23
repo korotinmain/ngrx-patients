@@ -25,4 +25,6 @@ import { PatientsEffects } from './store/effects/patients.effects';
     providers: [PatientsFacade],
 })
 export class PatientsModule {
+    constructor() {
+    }
 }

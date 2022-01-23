@@ -4,13 +4,14 @@ import { Observable } from 'rxjs';
 import { IOrder } from '../../../../core/interfaces/order.interface';
 import { editOrder, getOrders } from '../actions';
 import { getOrdersList } from '../selectors';
+import { IState } from '../reducers';
 
 @Injectable()
 export class OrdersFacade {
 
     orders$: Observable<Array<IOrder>> = this.store.pipe(select(getOrdersList))
 
-    constructor(private store: Store) {
+    constructor(private store: Store<IState>) {
     }
 
     get(): void {

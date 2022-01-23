@@ -1,0 +1,32 @@
+:host {
+  .patients-wrapper, .orders-wrapper {
+    margin-bottom: 30px;
+
+    .no-values-message {
+      padding: 10px;
+      background: #006064;
+      color: white;
+      border-radius: 8px;
+    }
+
+    .search-container {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    table {
+      width: 100%;
+
+      .favorites-cell {
+        text-align: right;
+      }
+
+      svg {
+        width: 18px;
+        height: 18px;
+        cursor: pointer;
+      }
+    }
+  }
+}

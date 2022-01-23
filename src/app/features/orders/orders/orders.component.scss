@@ -3,11 +3,16 @@
 :host {
   .orders-wrapper {
     padding-bottom: 30px;
+
     .table-container {
       margin-top: 30px;
 
       table {
         width: 100%;
+
+        .favorites-cell {
+          text-align: right;
+        }
 
         svg {
           width: 18px;
@@ -33,6 +38,7 @@ mat-card {
       font-size: 10px;
     }
   }
+
   mat-card-subtitle {
     min-height: 60px;
   }

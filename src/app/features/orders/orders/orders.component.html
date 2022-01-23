@@ -47,7 +47,7 @@
 
                     <ng-container matColumnDef="favorites">
                         <th mat-header-cell *matHeaderCellDef></th>
-                        <td mat-cell *matCellDef="let element">
+                        <td mat-cell *matCellDef="let element" class="favorites-cell">
                             <svg *ngIf="!element.isFavorite"
                                  (click)="changeFavoriteOrderState(element, true)"
                                  xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">

@@ -3,6 +3,7 @@ import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../core/core.module';
 import { Observable } from 'rxjs';
 import { IPatient } from '../../../core/interfaces/patient.interface';
 import { PatientsFacade } from '../store/facades/patients.facade';
+import { DISPLAYED_COLUMNS } from '../../../core/constants/displayed-columns.constants';
 
 @Component({
     selector: 'st-patients',
@@ -12,7 +13,7 @@ import { PatientsFacade } from '../store/facades/patients.facade';
 })
 export class PatientsComponent implements OnInit {
 
-    displayedColumns: Array<string> = ['fullName', 'middleName', 'lastName', 'age', 'favorites'];
+    displayedColumns: Array<string> = DISPLAYED_COLUMNS.PATIENTS;
 
     patients$: Observable<Array<IPatient>> = this.patientsListFacade.patients$;
     routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;

@@ -16,15 +16,3 @@
 - Bonus 2: Please make it look nice
 
 Estimation:
-
-# Changes
-- Added file extension to README .md
-- Changed tsconfig.json paths
-- Created OrdersService and added request method
-- Created PatientsService and added request method
-- Added favorites' router with lazy loading
-- Added Orders components with actions/reducers/selectors
-- Added Patients components with actions/reducers/selectors
-- Added Favorites components with actions/reducers/selectors
-- Created HTML for patients/orders/favorites and reflected data from API
-- Added favorites logic
