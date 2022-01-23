@@ -1,12 +1,8 @@
 import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../../../core/core.module';
-import { PatientsService } from '../../../core/services/petients-service/patients.service';
-import { Subject } from 'rxjs';
-import { Store } from '@ngrx/store';
-import { takeUntil } from 'rxjs/operators';
-import { selectPatients } from '../selectors/patients.selectors';
-import { retrievedPatientsList } from '../actions/patients.actions';
+import { Observable, Subject } from 'rxjs';
 import { IPatient } from '../../../core/interfaces/patient.interface';
+import { PatientsFacade } from '../store/facades/patients.facade';
 
 @Component({
     selector: 'st-patients',
@@ -20,22 +16,17 @@ export class PatientsComponent implements OnInit, OnDestroy {
 
     private _ngUnsubscribe = new Subject();
 
-    patients$ = this.store.select(selectPatients);
+    patients$: Observable<Array<IPatient>> = this.patientsListFacade.patients$;
     routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
 
-    constructor(private store: Store<{patients: Array<IPatient>}>,
-                private patientsService: PatientsService) {
+    constructor(private patientsListFacade: PatientsFacade) {
     }
 
     ngOnInit() {
     }
 
     getPatientsList(): void {
-        this.patientsService.getPatientsList()
-            .pipe(
-                takeUntil(this._ngUnsubscribe),
-            )
-            .subscribe(patients => this.store.dispatch(retrievedPatientsList({patients})));
+        this.patientsListFacade.get();
     }
 
     ngOnDestroy(): void {

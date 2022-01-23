@@ -5,6 +5,7 @@ export interface IOrder {
     stat: boolean,
     flags: string,
     onHold: boolean,
+    isFavorite: boolean,
     status: IOrderStatus,
     creator: IOrderCreator,
     patient: IPatient,
