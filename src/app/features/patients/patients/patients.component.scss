@@ -1,0 +1,19 @@
+:host {
+
+  .patients-wrapper {
+    padding-bottom: 30px;
+    .table-container {
+      margin-top: 30px;
+
+      table {
+        width: 100%;
+
+        svg {
+          width: 18px;
+          height: 18px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
