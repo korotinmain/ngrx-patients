@@ -26,4 +26,9 @@ export class OrdersComponent implements OnInit {
     getOrdersList(): void {
         this.ordersListFacade.get();
     }
+
+    changeFavoriteOrderState(order: IOrder, state: boolean): void {
+        const editedOrder = {...order, isFavorite: state};
+        this.ordersListFacade.edit(editedOrder);
+    }
 }

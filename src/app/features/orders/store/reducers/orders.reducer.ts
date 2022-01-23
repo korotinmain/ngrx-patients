@@ -1,6 +1,6 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { IOrder } from '../../../../core/interfaces/order.interface';
-import { getOrdersSuccess } from '../actions';
+import { editOrder, getOrdersSuccess } from '../actions';
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 
 export interface IOrdersListState extends EntityState<IOrder> {
@@ -21,6 +21,7 @@ const initialState: IOrdersListState = adapter.getInitialState({
 export const reducer = createReducer(
     initialState,
     on(getOrdersSuccess, (state, {orders}) => adapter.addMany(orders, state)),
+    on(editOrder, (state, {order}) => adapter.updateOne({id: order.orderNum, changes: order}, state)),
 );
 
 export function ordersReducer(state: IOrdersListState | null, action: Action) {

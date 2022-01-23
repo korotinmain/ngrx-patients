@@ -19,7 +19,7 @@ export class OrdersService {
   getOrdersList(): Observable<Array<IOrder>> {
     return this.http.get<OrdersResponse>('https://api.mocki.io/v2/79fb05cb')
         .pipe(
-            map(response => response.order),
+            map(response => response.order.map(order => ({...order, isFavorite: false}))),
         )
   }
 }

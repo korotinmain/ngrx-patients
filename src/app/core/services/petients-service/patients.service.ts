@@ -5,21 +5,22 @@ import { map } from 'rxjs/operators';
 import { IPatient } from '../../interfaces/patient.interface';
 
 interface PatientsResponse {
-  count: number,
-  patient: Array<IPatient>
+    count: number,
+    patient: Array<IPatient>
 }
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
 export class PatientsService {
 
-  constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) {
+    }
 
-  getPatientsList(): Observable<Array<IPatient>> {
-    return this.http.get<PatientsResponse>('https://api.mocki.io/v2/51597ef3')
-        .pipe(
-            map(response => response.patient),
-        )
-  }
+    getPatientsList(): Observable<Array<IPatient>> {
+        return this.http.get<PatientsResponse>('https://api.mocki.io/v2/51597ef3')
+            .pipe(
+                map(response => response.patient.map(patient => ({...patient, isFavorite: false}))),
+            )
+    }
 }

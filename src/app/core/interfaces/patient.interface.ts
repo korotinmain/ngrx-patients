@@ -5,6 +5,7 @@ export interface IPatient {
     ids: Array<IPatientCodeNameValue>,
     sex: IPatientSex,
     code: number,
+    isFavorite: boolean,
     address: IPatientAddress,
     fullName: string,
     inactive: boolean,
