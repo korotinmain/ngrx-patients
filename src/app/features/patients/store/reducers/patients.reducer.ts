@@ -1,7 +1,7 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { IPatient } from '../../../../core/interfaces/patient.interface';
-import { getPatientsSuccess } from '../actions/patients.actions';
+import { editPatient, getPatientsSuccess } from '../actions/patients.actions';
 
 export interface IPatientsListState extends EntityState<IPatient> {
     patients: Array<IPatient>;
@@ -21,6 +21,7 @@ const initialState: IPatientsListState = adapter.getInitialState({
 export const reducer = createReducer(
     initialState,
     on(getPatientsSuccess, (state, {patients}) => adapter.addMany(patients, state)),
+    on(editPatient, (state, {patient}) => adapter.updateOne({id: patient.defaultId, changes: patient}, state)),
 );
 
 export function patientsReducer(state: IPatientsListState | null, action: Action) {
